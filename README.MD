@@ -2,6 +2,18 @@
 Extension for original [google-api-client](https://github.com/google/google-api-ruby-client) with implementation of 
 [Firebase Cloud Messaging Server API](https://firebase.google.com/docs/cloud-messaging/server) via HTTP V1 protocol. 
 
+## Installation
+Add this line to your application's Gemfile:
+```ruby
+gem 'google-api-fcm'
+```
+
+And then execute:
+
+```
+$ bundle
+```
+
 ## Usage
 ```ruby
 require 'google/apis/messages'
