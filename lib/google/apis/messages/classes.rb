@@ -18,9 +18,9 @@ module Google
 
         end
 
-        def initialize_build(topic:, title:, body:)
+        def initialize_build(topic:, title:, body:, payload: nil)
           notification = Notification.new(title: title, body: body)
-          @message_object = MessageObject.new(topic: topic, notification: notification)
+          @message_object = MessageObject.new(topic: topic, notification: notification, data: payload)
         end
 
         def update!(**args)
@@ -33,6 +33,7 @@ module Google
 
         attr_accessor :topic
         attr_accessor :notification
+        attr_accessor :data
 
         def initialize(**args)
           update!(**args)
@@ -42,6 +43,14 @@ module Google
         def update!(**args)
           @topic = args[:topic] if args.key?(:topic)
           @notification = args[:notification] if args.key?(:notification)
+          if args.key?(:data) && args[:data].is_a?(Hash)
+            data = {}
+            args[:data].each do |key, value|
+              data[key.to_s] = value.to_s
+            end
+
+            @data = data
+          end
         end
       end
 
