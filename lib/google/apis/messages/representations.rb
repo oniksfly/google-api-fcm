@@ -30,6 +30,7 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :topic, as: 'topic'
           property :notification, as: 'notification', class: Google::Apis::Messages::Notification, decorator: Google::Apis::Messages::Notification::Representation
+          property :data, as: 'data'
         end
       end
 
