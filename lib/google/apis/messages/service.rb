@@ -27,8 +27,6 @@ module Google
           command = make_simple_command(:post, 'messages:send', options)
           command.request_representation = Google::Apis::Messages::Message::Representation
           command.request_object = message
-          command.response_representation = Google::Apis::Messages::Message::Representation
-          command.response_class = Google::Apis::Messages::Message
 
           execute_or_queue_command(command, &block)
         end
