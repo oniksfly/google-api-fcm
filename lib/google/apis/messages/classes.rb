@@ -11,16 +11,21 @@ module Google
         end
 
         def initialize_build(**args)
-          notification = Notification.new(
-            title: args[:notification][:title],
-            body: args[:notification][:body]
-          )
+          if args[:notification]
+            notification = Notification.new(
+              title: args[:notification][:title],
+              body: args[:notification][:body]
+            )
+          end
 
           message_object_args = {
             topic: args[:topic],
-            notification: notification,
             data: args[:payload]
           }
+
+          if notification
+            message_object_args[:notification] = notification
+          end
 
           if args.key?(:webpush) && args[:webpush][:icon]
             message_object_args[:webpush] = Webpush.new(args[:webpush])
