@@ -27,8 +27,16 @@ module Google
             message_object_args[:notification] = notification
           end
 
-          if args.key?(:webpush) && args[:webpush][:icon]
-            message_object_args[:webpush] = Webpush.new(args[:webpush])
+          if args.key?(:android)
+            message_object_args[:android] = args[:android]
+          end
+
+          if args.key?(:apns)
+            message_object_args[:apns] = args[:apns]
+          end
+
+          if args.key?(:webpush)
+            message_object_args[:webpush] = args[:webpush]
           end
 
           @message_object = MessageObject.new(message_object_args)
@@ -49,6 +57,8 @@ module Google
         attr_accessor :topic
         attr_accessor :notification
         attr_accessor :data
+        attr_accessor :android
+        attr_accessor :apns
         attr_accessor :webpush
 
         def initialize(**args)
@@ -62,6 +72,9 @@ module Google
           if args.key?(:data) && args[:data].is_a?(Hash)
             @data = { 'payload' => JSON.dump(args[:data]) }
           end
+
+          @android = args[:android] if args.key?(:android)
+          @apns = args[:apns] if args.key?(:apns)
           @webpush = args[:webpush] if args.key?(:webpush)
         end
       end
@@ -80,22 +93,6 @@ module Google
         def update!(**args)
           @title = args[:title] if args.key?(:title)
           @body = args[:body] if args.key?(:body)
-        end
-      end
-
-      class Webpush
-        include Google::Apis::Core::Hashable
-
-        attr_accessor :headers
-        attr_accessor :notification
-
-        def initialize(**args)
-          update!(**args)
-        end
-
-        def update!(**args)
-          @headers = args[:headers] if args.key?(:headers)
-          @notification = WebNotification.new(icon: args[:icon])
         end
       end
 

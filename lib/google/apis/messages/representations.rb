@@ -16,11 +16,6 @@ module Google
         include Google::Apis::Core::JsonObjectSupport
       end
 
-      class Webpush
-        class Representation < Google::Apis::Core::JsonRepresentation; end
-        include Google::Apis::Core::JsonObjectSupport
-      end
-
       class WebNotification
         class Representation < Google::Apis::Core::JsonRepresentation; end
         include Google::Apis::Core::JsonObjectSupport
@@ -43,9 +38,9 @@ module Google
           property :notification, as: 'notification',
             class: Google::Apis::Messages::Notification,
             decorator: Google::Apis::Messages::Notification::Representation
-          property :webpush, as: 'webpush',
-            class: Google::Apis::Messages::Webpush,
-            decorator: Google::Apis::Messages::Webpush::Representation
+          hash :android, as: 'android'
+          hash :apns, as: 'apns'
+          hash :webpush, as: 'webpush'
         end
       end
 
@@ -53,21 +48,6 @@ module Google
         class Representation < Google::Apis::Core::JsonRepresentation
           property :title, as: 'title'
           property :body, as: 'body'
-        end
-      end
-
-      class Webpush
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :headers, as: 'headers'
-          property :notification, as: 'notification',
-            class: Google::Apis::Messages::WebNotification,
-            decorator: Google::Apis::Messages::WebNotification::Representation
-        end
-      end
-
-      class WebNotification
-        class Representation < Google::Apis::Core::JsonRepresentation
-          property :icon, as: 'icon'
         end
       end
     end
