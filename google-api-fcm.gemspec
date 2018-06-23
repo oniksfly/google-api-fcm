@@ -2,7 +2,7 @@ require 'rake'
 
 Gem::Specification.new do |spec|
   spec.name                   = 'google-api-fcm'
-  spec.version                = '0.1.3'
+  spec.version                = '0.1.4'
   spec.authors                = ['Ilya Krigouzov']
   spec.email                  = ['webmaster@oniksfly.com']
   spec.summary                = %q{Client for accessing Firebase Cloud Messaging APIs}
