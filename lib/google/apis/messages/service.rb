@@ -28,6 +28,10 @@ module Google
           command.request_representation = Google::Apis::Messages::Message::Representation
           command.request_object = message
 
+          if ENV['FIREBASE_DEBUG'].present?
+            log_json(command)
+          end
+
           execute_or_queue_command(command, &block)
         end
 
@@ -35,6 +39,19 @@ module Google
 
         def apply_command_defaults(command)
           command.params['projectId'] = project_id
+        end
+
+        def log_json(command)
+          json = command.request_representation.new(command.request_object)
+            .to_json(user_options: { skip_undefined: true })
+          json_hash = JSON.parse(json)
+          log_message = "About to send json: \n #{pp json_hash}"
+
+          if defined?(Rails)
+            Rails.logger.debug log_message
+          else
+            puts log_message
+          end
         end
       end
     end
