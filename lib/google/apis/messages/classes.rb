@@ -39,6 +39,10 @@ module Google
             message_object_args[:webpush] = args[:webpush]
           end
 
+          if args.key?(:extra)
+            message_object_args[:extra] = args[:extra]
+          end
+
           @message_object = MessageObject.new(message_object_args)
         end
 
@@ -71,6 +75,12 @@ module Google
           @notification = args[:notification] if args.key?(:notification)
           if args.key?(:data) && args[:data].is_a?(Hash)
             @data = { 'payload' => JSON.dump(args[:data]) }
+          end
+
+          if args.key?(:extra) && args[:extra].is_a?(Hash)
+            args[:extra].each do |key, value|
+              @data[key] = value.to_s
+            end
           end
 
           @android = args[:android] if args.key?(:android)
