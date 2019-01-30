@@ -11,6 +11,10 @@ module Google
         end
 
         def initialize_build(**args)
+          if args[:token] && args[:topic]
+            raise ArgumentError, "Arguments :token and :topic can't be used together"
+          end
+
           if args[:notification]
             notification = Notification.new(
               title: args[:notification][:title],
@@ -20,6 +24,7 @@ module Google
 
           message_object_args = {
             topic: args[:topic],
+            token: args[:token],
             data: args[:payload]
           }
 
@@ -59,6 +64,7 @@ module Google
         include Google::Apis::Core::Hashable
 
         attr_accessor :topic
+        attr_accessor :token
         attr_accessor :notification
         attr_accessor :data
         attr_accessor :android
@@ -72,6 +78,7 @@ module Google
         # Update properties of this object
         def update!(**args)
           @topic = args[:topic] if args.key?(:topic)
+          @token = args[:token] if args.key?(:token)
           @notification = args[:notification] if args.key?(:notification)
           if args.key?(:data) && args[:data].is_a?(Hash)
             @data = { 'payload' => JSON.dump(args[:data]) }

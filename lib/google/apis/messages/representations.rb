@@ -34,6 +34,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :topic, as: 'topic'
+          property :token, as: 'token'
           property :data, as: 'data'
           property :notification, as: 'notification',
             class: Google::Apis::Messages::Notification,
