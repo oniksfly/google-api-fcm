@@ -25,12 +25,29 @@ authorization = Google::Auth.get_application_default(scope)
 
 service = Google::Apis::Messages::MessagesService.new(project_id: 'PROJECT-ID')
 service.authorization = authorization
+```
 
-# Build notification message
+```ruby
+# Build notification message (with topic)
 message = Google::Apis::Messages::Message.new(
-  topic: 'news', 
-  title: 'Breaking news', 
+  topic: 'news',
+  title: 'Breaking news',
   body: 'Hell has frozen over'
 )
-service.notify_topic(message) # Finally send the message to FCM
+```
+
+or
+
+```ruby
+# Build notification message (with token)
+message = Google::Apis::Messages::Message.new(
+  token: 'bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1',
+  title: 'Breaking news',
+  body: 'Hell has frozen over'
+)
+```
+
+```ruby
+# Finally send the message to FCM
+service.notify(message)
 ```

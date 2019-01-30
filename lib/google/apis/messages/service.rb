@@ -35,6 +35,8 @@ module Google
           execute_or_queue_command(command, &block)
         end
 
+        alias notify notify_topic
+
         protected
 
         def apply_command_defaults(command)
