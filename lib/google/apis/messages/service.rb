@@ -28,7 +28,7 @@ module Google
           command.request_representation = Google::Apis::Messages::Message::Representation
           command.request_object = message
 
-          if ENV['FIREBASE_DEBUG'].present?
+          if !ENV['FIREBASE_DEBUG'].nil?
             log_json(command)
           end
 
