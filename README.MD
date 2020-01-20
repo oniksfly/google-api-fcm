@@ -31,8 +31,10 @@ service.authorization = authorization
 # Build notification message (with topic)
 message = Google::Apis::Messages::Message.new(
   topic: 'news',
-  title: 'Breaking news',
-  body: 'Hell has frozen over'
+  notification: {
+    title: 'Breaking news',
+    body: 'Hell has frozen over'
+  }
 )
 ```
 
@@ -42,8 +44,10 @@ or
 # Build notification message (with token)
 message = Google::Apis::Messages::Message.new(
   token: 'bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1',
-  title: 'Breaking news',
-  body: 'Hell has frozen over'
+  notification: {
+    title: 'Breaking news',
+    body: 'Hell has frozen over'
+  }
 )
 ```
 
