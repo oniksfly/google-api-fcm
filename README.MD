@@ -13,7 +13,7 @@ gem 'google-api-fcm'
 
 And then execute:
 
-```
+```shell
 $ bundle
 ```
 
