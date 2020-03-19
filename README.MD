@@ -59,3 +59,20 @@ message = Google::Apis::Messages::Message.new(
 # Finally send the message to FCM
 service.notify(message)
 ```
+
+## Set analytics label
+
+The analytics label can be set when sending the message, in order to mark the message for analytics purposes
+
+```ruby
+message = Google::Apis::Messages::Message.new(
+  token: 'bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1',
+  notification: {
+    title: 'Breaking news',
+    body: 'Hell has frozen over'
+  },
+  fcm_options: {
+    analytics_label: 'test-label'
+  }
+)
+```
