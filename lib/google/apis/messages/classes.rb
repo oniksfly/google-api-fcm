@@ -44,6 +44,10 @@ module Google
             message_object_args[:webpush] = args[:webpush]
           end
 
+          if args.key?(:fcm_options)
+            message_object_args[:fcm_options] = args[:fcm_options]
+          end
+
           if args.key?(:extra)
             message_object_args[:extra] = args[:extra]
           end
@@ -70,6 +74,7 @@ module Google
         attr_accessor :android
         attr_accessor :apns
         attr_accessor :webpush
+        attr_accessor :fcm_options
 
         def initialize(**args)
           update!(**args)
@@ -93,6 +98,7 @@ module Google
           @android = args[:android] if args.key?(:android)
           @apns = args[:apns] if args.key?(:apns)
           @webpush = args[:webpush] if args.key?(:webpush)
+          @fcm_options = args[:fcm_options] if args.key?(:fcm_options)
         end
       end
 

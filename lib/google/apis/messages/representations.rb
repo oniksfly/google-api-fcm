@@ -42,6 +42,7 @@ module Google
           hash :android, as: 'android'
           hash :apns, as: 'apns'
           hash :webpush, as: 'webpush'
+          hash :fcm_options, as: 'fcm_options'
         end
       end
 
