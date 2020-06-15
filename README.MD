@@ -1,7 +1,10 @@
 # Google API Client for FCM
 
 Extension for original [google-api-client](https://github.com/google/google-api-ruby-client) with implementation of 
-[Firebase Cloud Messaging Server API](https://firebase.google.com/docs/cloud-messaging/server) via HTTP V1 protocol. 
+[Firebase Cloud Messaging Server API](https://firebase.google.com/docs/cloud-messaging/server) via HTTP V1 protocol.
+
+## Note
+FCM support was added to original [google-api-client](https://github.com/googleapis/google-api-ruby-client) according [docs](https://googleapis.dev/ruby/google-api-client/latest/Google/Apis/FcmV1.html). 
 
 ## Installation
 
