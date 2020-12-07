@@ -34,6 +34,7 @@ module Google
         # @private
         class Representation < Google::Apis::Core::JsonRepresentation
           property :topic, as: 'topic'
+          property :condition, as: 'condition'
           property :token, as: 'token'
           property :data, as: 'data'
           property :notification, as: 'notification',
@@ -43,7 +44,6 @@ module Google
           hash :apns, as: 'apns'
           hash :webpush, as: 'webpush'
           hash :fcm_options, as: 'fcm_options'
-          hash :condition, as: 'condition'
         end
       end
 
